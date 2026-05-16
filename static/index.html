@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Classification App</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Using Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
+    <!-- Main container for the application -->
+    <div class="w-full max-w-2xl mx-auto p-6 md:p-8">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+
+            <!-- Header section -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">
+                    Text Classification Application
+                </h1>
+                <p class="text-gray-500 mt-2">
+                    Enter any text below to get a prediction.
+                </p>
+            </div>
+
+            <!-- Form for user input -->
+            <!-- The action attribute points to the prediction endpoint, as in the original file -->
+            <form action="{{ url_for('predict') }}" method="post" class="space-y-6">
+
+                <!-- Text Input Field -->
+                <div>
+                    <label for="text-input" class="sr-only">Input Text</label>
+                    <input
+                        type="text"
+                        id="text-input"
+                        name="Insulin"
+                        placeholder="Type or paste your text here..."
+                        required
+                        class="w-full px-4 py-3 text-lg text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition duration-300 ease-in-out"
+                    />
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 text-white font-bold text-lg py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out shadow-md"
+                >
+                    Predict
+                </button>
+            </form>
+
+            <!-- Prediction Result Display Area -->
+            <div class="mt-8 text-center">
+                <!-- This placeholder will be replaced by the prediction result from the backend -->
+                <p class="text-lg text-gray-600 h-8">{{ prediction_text }}</p>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+    </div>
+
+</body>
+</html>
